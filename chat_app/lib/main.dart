@@ -1,4 +1,3 @@
-//import 'package:chat_app/pages/signin.dart';
 import 'package:chat_app/pages/chatpage.dart';
 import 'package:chat_app/pages/home.dart';
 import 'package:chat_app/pages/signin.dart';
