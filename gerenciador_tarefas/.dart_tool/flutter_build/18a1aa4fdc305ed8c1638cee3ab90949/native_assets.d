@@ -1,0 +1,1 @@
+ C:\\Users\\j_caz\\OneDrive\\SI7\\DAM\\gerenciador_tarefas\\.dart_tool\\flutter_build\\18a1aa4fdc305ed8c1638cee3ab90949\\native_assets.yaml: 
