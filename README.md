@@ -1,2 +1,2 @@
 # DAM-2024
- Desenvolvimento de Aplicativos Móveis
+ Repositório da disciplina Desenvolvimento de Aplicativos Móveis do curso de Sistemas de Informação - UNIMATER
