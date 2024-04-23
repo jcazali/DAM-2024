@@ -20,11 +20,29 @@ class _FiltroPageState extends State<FiltroPage> {
     Tarefa.campoPrazo: 'Prazo'
   };
 
-  late final SharedPreferencesprefs;
-  final _descricaoControler = TextEditingController();
+  late final SharedPreferences prefs;
+  final _descricaoController = TextEditingController();
   String _campoOrdenacao = Tarefa.campoId;
-  bool _usarOrdemDecresente = false;
+  bool _usarOrdemDecrescente = false;
   bool _alterouValores = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _carregarSharedPreferences();
+  }
+
+  void _carregarSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _campoOrdenacao =
+          prefs.getString(FiltroPage.CHAVE_CAMPO_ORDENACAO) ?? Tarefa.campoId;
+      _usarOrdemDecrescente =
+          prefs.getBool(FiltroPage.CHAVE_ORDENAR_DECRESCENTE) ?? false;
+      _descricaoController.text =
+          prefs.getString(FiltroPage.CHAVE_FILTRO_DESCRICAO) ?? '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,29 +81,49 @@ class _FiltroPageState extends State<FiltroPage> {
         Row(
           children: [
             Checkbox(
-              value: _usarOrdemDecresente,
-              onChanged: null,
+              value: _usarOrdemDecrescente,
+              onChanged: _onUsarOrdemDecrescenteChange,
             ),
-            const Text('Usar ordem decresente')
+            const Text('Usar ordem descrescente')
           ],
         ),
         const Divider(),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: TextField(
-            decoration: InputDecoration(labelText: 'A descrição começa com:'),
+            decoration:
+                const InputDecoration(labelText: 'A descriçao começa com:'),
+            controller: _descricaoController,
+            onChanged: _onFiltroDescricaoChange,
           ),
         ),
       ],
     );
   }
 
+  Future<bool> _onVoltarClick() async {
+    Navigator.of(context).pop(_alterouValores);
+    return true;
+  }
+
+  void _onFiltroDescricaoChange(String? valor) {
+    prefs.setString(FiltroPage.CHAVE_FILTRO_DESCRICAO, valor ?? '');
+    _alterouValores = true;
+  }
+
   void _onCampoOrdenacaoChanged(String? valor) {
     prefs.setString(FiltroPage.CHAVE_CAMPO_ORDENACAO, valor ?? '');
     _alterouValores = true;
-
     setState(() {
       _campoOrdenacao = valor ?? '';
+    });
+  }
+
+  void _onUsarOrdemDecrescenteChange(bool? valor) {
+    prefs.setBool(FiltroPage.CHAVE_ORDENAR_DECRESCENTE, valor == true);
+    _alterouValores = true;
+    setState(() {
+      _usarOrdemDecrescente = valor == true;
     });
   }
 }
