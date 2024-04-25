@@ -1,0 +1,1 @@
+ C:\\SI7\\DAM-2024\\gerenciador_tarefas\\.dart_tool\\flutter_build\\4e606f12305313961b1a825245278f86\\native_assets.yaml: 

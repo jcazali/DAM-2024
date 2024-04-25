@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.teste.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.teste.app-mergeDebugResources-5:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\j_caz\\OneDrive\\SI7\\DAM\\gerenciador_tarefas\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\SI7\\DAM-2024\\gerenciador_tarefas\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
