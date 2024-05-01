@@ -11,8 +11,12 @@ class TarefaDao {
       tarefa.id = await db.insert(Tarefa.nomeTabela, valores);
       return true;
     } else {
-      final registrosAtualizados = await db.update(Tarefa.nomeTabela, valores,
-          where: '${Tarefa.campoId} = ?', whereArgs: [tarefa.id]);
+      final registrosAtualizados = await db.update(
+        Tarefa.nomeTabela,
+        valores,
+        where: '${Tarefa.campoId} = ?',
+        whereArgs: [tarefa.id],
+      );
 
       return registrosAtualizados > 0;
     }
@@ -34,7 +38,7 @@ class TarefaDao {
     final db = await dbProvider.database;
     String? where;
     if (filtro.isNotEmpty) {
-      where = 'UPPER(${Tarefa.campoDescricao}) LIKE ${filtro.toUpperCase()}';
+      where = "UPPER(${Tarefa.campoDescricao}) LIKE '${filtro.toUpperCase()}%'";
     }
     var orderBy = campoOrdenacao;
 

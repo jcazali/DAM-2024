@@ -1,4 +1,4 @@
-#Tue Apr 23 20:38:49 BRT 2024
+#Wed May 01 13:09:00 BRT 2024
 base.0=C\:\\SI7\\DAM-2024\\gerenciador_tarefas\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
